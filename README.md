@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+<!-- After I created my rails and heroku repo's, I started validating my Models -->
+
+<!-- I went on to the seeds to create 5.times loops and fakers. -->
