@@ -1,20 +1,9 @@
 class TweetsController < ApplicationController
     def index
-      render template: 'tweets/index.html.erb', locals: {
+      render template: 'tweet/index.html.erb', locals: {
         tweets: Tweet.all,
 
       }
-    end
-
-    def show
-      if Tweet.exists?(params[:id])
-        tweet = Tweet.find(params[:id])
-        render template: 'tweets/show.html.erb', locals: {
-          body: body
-        }
-      else
-        render html: "Not Found", status: 404
-      end
     end
 
     def new
@@ -23,6 +12,25 @@ class TweetsController < ApplicationController
       }
     end
 
+    def edit
+      render locals: {
+        tweet: Tweet.find(params[:id])
+      }
+    end
+
+    def show
+      if Tweet.exists?(params[:id])
+        tweet = Tweet.find(params[:id])
+        render template: 'tweet/show.html.erb', locals: {
+          body: body
+        }
+      else
+        render html: "Tweet Not Found", status: 404
+      end
+    end
+
+
+
     def create
       tweet = Tweet.new
       tweet.body = params[:tweet][:body]
@@ -30,17 +38,12 @@ class TweetsController < ApplicationController
         redirect_to_tweet_path(tweet)
       else
         flash[:alert] = "Could not be saved due to errors."
-        render template: '/tweets/new.html.erb', locals: {
+        render template: '/tweet/new.html.erb', locals: {
           tweet: tweet
         }
       end
     end
 
-    def edit
-      render locals: {
-        tweet: Tweet.find(params[:id])
-      }
-    end
 
     def update
       tweet = Tweet.find(params[:id])
@@ -48,7 +51,7 @@ class TweetsController < ApplicationController
       if tweet.save
         redirect_to_tweet_path(tweet)
       else
-        render template: '/tweets/new.html.erb', locals: {
+        render template: '/tweet/new.html.erb', locals: {
           tweet: tweet
         }
       end
