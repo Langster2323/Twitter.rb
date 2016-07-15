@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Twitter</title>
+    <title><img src = "/assets/funny-cartoon-bird.jpg">Twitter</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
+    <header>
+
+      <nav>
+        <ul>
+          <li><a href='/'>Home_image_button</a></li>
+          <li><a href='tweets'>Tweets_image_button</a></li>
+        </ul>
+      </nav>
+  </header>
     <%= yield %>
   </body>
 </html>
