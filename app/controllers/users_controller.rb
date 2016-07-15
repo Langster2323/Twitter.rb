@@ -12,18 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    user = User.find(params[:id])
-    user.fullname = params[:user][:fullname] if params[:user][:fullname].present?
-    user.email = params[:user][:email] if params[:user][:email].present?
-    user.handle = params[:user][:handle] if params[:user][:handle].present?
-    if user.save
-      redirect_to_user_path(user)
-    else
-      render template: '/users/new.html.erb', locals: {
-        user: user
-      }
-    end
+  def new
+    render locals: {
+      user: User.new
+    }
   end
 
   def create
@@ -41,8 +33,22 @@ class UsersController < ApplicationController
   end
 
   def edit
+    render locals: {
+      user: User.find(params[:id])
+    }
   end
 
-  def destroy
+  def update
+    user = User.find(params[:id])
+    user.fullname = params[:user][:fullname] if params[:user][:fullname].present?
+    user.email = params[:user][:email] if params[:user][:email].present?
+    user.handle = params[:user][:handle] if params[:user][:handle].present?
+    if user.save
+      redirect_to_user_path(user)
+    else
+      render template: '/users/new.html.erb', locals: {
+        user: user
+      }
+    end
   end
 end
