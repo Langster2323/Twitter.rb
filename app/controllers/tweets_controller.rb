@@ -5,12 +5,12 @@ class TweetsController < ApplicationController
   def show
   end
 
-  def update
+  def new
   end
 
   def create
   end
 
-  def new
+  def update
   end
 end

@@ -28,3 +28,5 @@ Things you may want to cover:
 <!-- I went on to the seeds to create 5.times loops and fakers. -->
 
 <!-- Created my routes for both the users and tweets  -->
+
+<!-- Worked on the CRUD on my users controller -->
